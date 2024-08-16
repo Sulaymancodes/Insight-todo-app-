@@ -1,0 +1,138 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+@font-face {
+    font-family: 'MyFont';
+    src: url('./gang-of-three-cufonfonts/go3v2.ttf') format('truetype');
+    font-weight: lighter;
+    font-style: normal;
+  }
+:root{
+    --background-color: #f1c4948e;
+    --color-one: #3a3939;
+}
+body{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='120px'><text x='0' y='15' fill='grey' font-size='20'>ラーメン丼</text></svg>");
+    background-color: var(--background-color);
+    font-family: 'MyFont';
+}
+
+nav{
+    padding: 10px 0;
+}
+#content{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.logo-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1em;
+}
+h1{
+    color: #1c1b1b;
+}
+.svg{
+    width: 40px;
+    height: 40px;
+}
+.links-container{
+    position: sticky;
+    display: flex;
+    background-color: #222222;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 12px;
+    justify-content: center;
+    align-items: center;   
+    justify-content: space-between;
+}
+button{
+    width: 18%;
+    padding: 10px;
+    background-color: #222;
+    border: none;
+    color: #e4e4e4;
+    border-radius: 10px;
+    border: 1px solid #343333;
+}
+button:hover{
+    border: 1px solid #6a6a6a;
+}
+.contact-btn{
+    background-color: #fee66c;
+    color: #000000;
+}
+.contact-btn:hover{
+    background-color: #dbc65b;
+}
+
+/*home styling*/
+.home-icon{
+    width: 250px;
+    height: 300px;
+}
+.home-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffe2c2;
+    border-radius: 10px;
+    border: 1px solid grey;
+    padding: 10px;
+}
+.home-info{
+    font-size: 2.5rem;
+}
+
+/*menu container*/
+.menu-container{
+    display: grid;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    justify-items: center;
+    width: 70%;
+    margin: 0 auto;
+
+}
+.egg-container,
+.gyoza-container,
+.naruto-container,
+.noodles-container,
+.sushi-container,
+.yakitori-container{
+    background-color: #ffe2c2;
+    padding: 50px;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+.egg-image,
+.gyoza-image,
+.naruto-image,
+.noodles-image,
+.sushi-image,
+.yakitori-image{
+    width: 80px;
+    height: 80px;
+}
+
+/*Media query for responsiveness on different devices*/
+@media (max-width:978px) {
+    .home-info{font-size: 1.5rem;}
+}
+@media(max-width:715px){
+    .home-container{
+        display: block;
+    }
+}
+@media(max-width:450px){
+    .links-container{
+        width: 95%;
+    }
+}
