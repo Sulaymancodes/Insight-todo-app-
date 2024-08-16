@@ -1,6 +1,6 @@
-# Ramen Shop
+# INSIGHT A TODO APP CREAYED WITH JAVASCRIPT
 
-Welcome to the Ramen Shop project! This repository contains the code for a simple restaurant site using Webpack, HTML, CSS, and JavaScript.
+Welcome to the Insight project! This repository contains the code for a  todo list webapp using Webpack, HTML, CSS, and JavaScript.
 
 
 ## Getting Started
