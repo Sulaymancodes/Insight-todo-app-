@@ -1,4 +1,4 @@
-# INSIGHT A TODO APP CREATED WITH JAVASCRIPT
+# INSIGHT (A TODO APP CREATED WITH JAVASCRIPT)
 
 Welcome to the Insight project! This repository contains the code for a  todo list webapp using Webpack, HTML, CSS, and JavaScript.
 
