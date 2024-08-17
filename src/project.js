@@ -4,5 +4,5 @@ export default function Project(name) {
 
     this.addTodo = function(todo) {
         this.projectContainer.push(todo);
-    };
+    }; 
 }
