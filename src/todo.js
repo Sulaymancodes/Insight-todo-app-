@@ -3,12 +3,10 @@ export default function Todo(title,description,dueDate,priority,checkList){
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
-    this.checkList = checkList;
     return{
       title,
       description,
       dueDate,
-      priority,
-      checkList
+      priority
     }
 }
