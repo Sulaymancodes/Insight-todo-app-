@@ -22,6 +22,10 @@ a{
     color:#fff;
    
 }
+.flex{
+    display: flex;
+    justify-content: space-between;
+}
 .main-container{
     width: 100%;
     display: grid;
@@ -84,13 +88,13 @@ aside{
     height: 95vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     grid-column: 1 / span 2;
     grid-row: 1 / 6;
 }
 
 aside > p{
-    margin-left: 3em;
+    text-align: center;
+    margin: 30px;
 }
 
 .sidebar-assets{
@@ -100,9 +104,7 @@ aside > p{
     border-radius: 10px;
     align-items: center;
 }
-.sidebar-assets-1{
-    border-radius: 10px;
-}
+
 .sidebar-assets:hover{
     background-color: #1d3542;
     
@@ -126,34 +128,29 @@ main{
 main::-webkit-scrollbar {
     display: none; /* Hide the scrollbar track in WebKit browsers (Chrome, Safari) */
 }
-.insights-container{
-    display: flex;
-    justify-content: space-between;
-}
-.insights{
-    background-color: #172933;
-    border: 1px solid #304F69;
-    padding: 4em 1em;
-    border-radius: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
+
 .grey{
     color: #8c97a0;
 }
-.status{
-    display: flex;
-    align-items: center;
+.todo-item-container{
     background-color: #172933;
     border: 1px solid #304F69;
     padding: 10px;
     margin-top: 10px;
+    line-height: 1.5;
 }
 
-.status > img{
-    margin-right: 10px;
+.edit-icon,
+.delete-icon{
+    background-color: #172933;
+    border: 1px solid #304F69;
+    padding: 2px;
 }
+.edit-icon:hover,
+.delete-icon:hover{
+    background-color: #1d3542;
+}
+
 
 dialog{
     position: fixed;
@@ -224,144 +221,4 @@ input{
     text-align: center;
     margin: 20px 0;
 }
-
-/* Notification Section */
-#main h2 {
-    color: #ffffff;
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.threats-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.threat {
-    background-color: #c30c0ca0;
-    border: 1.5px solid #d42b2b;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    width: 100%;
-}
-
-.threat p {
-    color: #fffefe;
-    font-size: 16px;
-    line-height: 1.5;
-    margin: 0;
-}
-
-.threat p:first-child {
-    color: #ffffff;
-    font-weight: bold;
-}
-.incident-container{
-    background-color: #172933;
-    border: 1px solid #304F69;
-}
-.flex-incident{
-    display:  flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: .5rem;
-}
-
-/* Style for the history list */
-.history-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.history-list li {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid #ccc;
-}
-
-.history-list .event-date {
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.history-list .event-description {
-    flex: 1;
-}
-
-/* Style for the support section */
-.faq-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.faq-list li {
-    margin-bottom: 15px;
-}
-
-.faq-question {
-    font-weight: bold;
-}
-
-.faq-answer {
-    margin-left: 10px;
-}
-
-.support-form {
-    margin-top: 20px;
-}
-
-.form-field {
-    margin-bottom: 15px;
-}
-
-.form-field label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-.form-field input,
-.form-field textarea {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-}
-
-.support-form button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
-
-.support-form button:hover {
-    background-color: #0056b3;
-}
-
-/* Style for the privacy section */
-.privacy-section p {
-    margin-bottom: 20px;
-    line-height: 1.6;
-}
-
-.privacy-section h3 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-.privacy-section a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.privacy-section a:hover {
-    text-decoration: underline;
-}
-
 

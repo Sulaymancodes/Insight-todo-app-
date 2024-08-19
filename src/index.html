@@ -19,78 +19,29 @@
             </div>
         </header>
         <aside class="padding">
-            <p><a href="#">🛡️ Insight</a></p>
-            <div>
-                <div class="sidebar-assets home">
-                    <img class="svg" src="svgs/home-svgrepo-com (1).svg" alt="home-icon">
-                    <p class="sidebar-text">Home</p>
-                </div>
-                <div class="sidebar-assets notification">
-                    <img class="svg" src="svgs/notification-bell-svgrepo-com.svg" alt="home-icon">
-                    <p class="sidebar-text">Threats Alert</p>
-                </div>
-                <div class="sidebar-assets security">
-                    <img class="svg" src="svgs/events-svgrepo-com.svg" alt="profile-icon">
-                    <p class="sidebar-text">Security Status</p>
-                </div>
-                <div class="sidebar-assets history">
-                    <img class="svg" src="svgs/history-round-svgrepo-com.svg" alt="history-icon">
-                    <p class="sidebar-text">History</p>
-                </div>
-            </div>
-            <div>
-                <div class="sidebar-assets settings">
-                    <img class="svg" src="svgs/settings-svgrepo-com.svg" alt="settings-icon">
-                    <p class="sidebar-text">Settings</p>
-                </div>
-                <div class="sidebar-assets support">
-                    <img class="svg" src="svgs/question-mark-circle-svgrepo-com.svg" alt="help-icon">
-                    <p class="sidebar-text">Support</p>
-                </div>
-                <div class="sidebar-assets privacy">
-                    <img class="svg" src="svgs/secure-svgrepo-com.svg" alt="privacy-icon">
-                    <p class="sidebar-text">Privacy</p>
-                </div>
-            </div>
+            <p><a href="#">📘Insights</a></p>
+            <div class="sidebar-container"></div>
         </aside>
         <main id="main">
             <h2>Home</h2>
             <p class="grey">Overview of your Pending To do's</p>
             <br>
-            <h4>Insights</h4>
-            <div class="insights-container">
-                <div class="insights">
-                    <p>1 medium-severity issues</p>
-                    <p class="grey">Issue: Missing or incorrect HTTP Strict Transport Security(HSTS) header</p>
-                </div>
-                <div class="insights">
-                    <p>2 low-severity issues</p>
-                    <p class="grey">Issue: Missing or incorrect HTTP Strict Transport Security(HSTS) header</p>
-                </div>
-            </div>
-            <h4>Status</h4>
-            <div class="status">
-                <img class="svg" src="svgs/secure-svgrepo-com.svg" alt="profile-icon">
-                <div class="flex">
-                    <p>Certificate</p>
-                    <p class="grey">All good to go</p>
-                </div>
-            </div>
-            <div class="status">
-                <img class="svg" src="svgs/secure-svgrepo-com.svg" alt="profile-icon">
-                <div class="flex">
-                    <p>SSL Labs</p>
-                    <p class="grey">A+ (100%)</p>
-                </div>
-            </div>
-            <div class="status">
-                <img class="svg" src="svgs/secure-svgrepo-com.svg" alt="profile-icon">
-                <div class="flex">
-                    <p>Content Security Policy(CSP) Report-Only</p>
-                    <p class="grey">Not Yet Configured</p>
-                </div>
-            </div>
+            <h4>Pending</h4>
         </main>
+
+        <dialog id="#todo-form">
+            <form action="">
+                <label for="title"></label>
+                <input type="text" id="title">
+                <label for="description"></label>
+                <input type="text" id="description">
+                <label for="due-date"></label>
+                <input type="date" id="due-date">
+                <label for="priority"></label>
+                <input type="text" id="priority">
+                <input type="submit" id="submit">
+            </form>
+        </dialog>
     </div>
     
 </body>
