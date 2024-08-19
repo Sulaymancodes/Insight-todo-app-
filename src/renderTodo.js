@@ -1,7 +1,7 @@
 import editIcon from './svgs/edit-svgrepo-com.svg';
 import deleteIcon from './svgs/delete-filled-svgrepo-com.svg';
 
-export default function renderTodo(arr,deleteTodo) {
+export default function renderTodo(arr,deleteTodo,editTodo) {
     const mainContainer = document.querySelector('#main');
 
     // Adding dynamic container to keep the elements of the main
@@ -20,8 +20,8 @@ export default function renderTodo(arr,deleteTodo) {
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item-container');
 
-        const todoItemTitle = document.createElement('p');
-        todoItemTitle.textContent = `Title: ${arr[i].title}`;
+        const todoItemTitle = document.createElement('h1');
+        todoItemTitle.textContent = arr[i].title;
 
         const todoItemDescription = document.createElement('p');
         todoItemDescription.textContent = `Description: ${arr[i].description}`;
@@ -37,6 +37,9 @@ export default function renderTodo(arr,deleteTodo) {
 
         const diVEditAndDeleteIconContainer = document.createElement('div');
         const editIconContainer = document.createElement('img');
+        editIconContainer.addEventListener('click', (event) =>{
+           editTodo(event)
+        })
         editIconContainer.classList.add('edit-icon');
         editIconContainer.src = editIcon;
 

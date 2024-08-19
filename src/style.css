@@ -35,40 +35,13 @@ a{
 }
 header{
     padding: 1em;
-    grid-column: 3 / -1;
     border-bottom: 1.5px solid #233b53;
-    border-left: 1.5px solid #233b53;
+    grid-column: 3 / -1;
 }
-header > p{
+header > h1{
     text-align: center;
 }
-.header-url{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-.header-content{
-    display: flex;
-    justify-content: space-between;
-}
-.url-text,
-.edit-btn{
-    background-color: #172933;
-    border: 1px solid #304F69;
-    padding: .5em 2em;
-}
-.edit-btn{
-    margin-left: 10px;
-    background-color: #1C91F2;
-}
-.edit-btn:hover{
-    background-color: #146eb7;
-}
-.profile-btn{
-    background-color: #1C91F2;
-    padding: .5rem .7rem;
-    border: none;
-}
+
 .shadow{
     box-shadow: 2px 2px black;
 }
@@ -85,7 +58,8 @@ header > p{
 }
 
 aside{
-    height: 95vh;
+    height: 100vh;
+    border-right: 1.5px solid #233b53;
     display: flex;
     flex-direction: column;
     grid-column: 1 / span 2;
@@ -121,7 +95,6 @@ main{
     grid-row: 2 / 6;
     gap: 10px;
     padding: 1em 2em;
-    border-left: 1.5px solid #233b53;
     overflow-y: auto; 
     height: 80vh;
 }
@@ -190,8 +163,8 @@ input,#priority {
     border: 1px solid #304F69;
     color: #8FB0CC;
 }
-.red{
-    background-color: rgb(159, 26, 26);
+.red:hover{
+    background-color: rgba(159, 26, 26, 0.558);
 }
 #submit, .submit {
     background-color: #1C91F2;
