@@ -114,7 +114,8 @@ main::-webkit-scrollbar {
 }
 
 .edit-icon,
-.delete-icon{
+.delete-icon,
+.check-icon{
     background-color: #172933;
     border: 1px solid #304F69;
     padding: 2px;
@@ -122,7 +123,8 @@ main::-webkit-scrollbar {
     height: 25px;
 }
 .edit-icon:hover,
-.delete-icon:hover{
+.delete-icon:hover,
+.check-icon:hover{
     background-color: #1d3542;
 }
 
@@ -165,6 +167,9 @@ input,#priority {
 }
 .red:hover{
     background-color: rgba(159, 26, 26, 0.558);
+}
+.green{
+    background-color: rgb(56, 190, 56);
 }
 #submit, .submit {
     background-color: #1C91F2;

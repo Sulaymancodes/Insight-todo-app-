@@ -65,7 +65,7 @@ createSidebarItem(addTodoIcon, 'Project');
 
 
 const todoArrayContainer = [];
-const todo1 = new Todo('GAME','call of duty','2024-08-12','high');
+const todo1 = new Todo('PlayStation','call of duty','2024-08-12','high');
 const todo2 = new Todo('NETFLIX','suits','2024-09-25','medium');
 const todo3 = new Todo('PRAYER','maghrib','2024-18-16','high');
 

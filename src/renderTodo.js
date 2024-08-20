@@ -1,7 +1,10 @@
 import editIcon from './svgs/edit-svgrepo-com.svg';
 import deleteIcon from './svgs/delete-filled-svgrepo-com.svg';
+import checkIcon from './svgs/check-svgrepo-com.svg';
 
 export default function renderTodo(arr,deleteTodo,editTodo) {
+    let checkStatus = false;
+
     const mainContainer = document.querySelector('#main');
 
     // Adding dynamic container to keep the elements of the main
@@ -43,6 +46,23 @@ export default function renderTodo(arr,deleteTodo,editTodo) {
         editIconContainer.classList.add('edit-icon');
         editIconContainer.src = editIcon;
 
+        const checkIconContainer = document.createElement('img');
+        checkIconContainer.addEventListener('click', () =>{
+            if(checkStatus === false){
+                todoItemContainer.classList.add('grey');
+                checkIconContainer.classList.add('green');
+                checkStatus = true;
+            }
+            else if(checkStatus === true){
+                todoItemContainer.classList.remove('grey');
+                checkIconContainer.classList.remove('green');
+                checkStatus = false;
+            }
+            
+        })
+        checkIconContainer.classList.add('check-icon');
+        checkIconContainer.src = checkIcon;
+
         const deleteIconContainer = document.createElement('img');
         deleteIconContainer.addEventListener('click', (event) =>{
             deleteTodo(event);
@@ -51,7 +71,7 @@ export default function renderTodo(arr,deleteTodo,editTodo) {
         deleteIconContainer.classList.add('red');
         deleteIconContainer.src = deleteIcon;
 
-        diVEditAndDeleteIconContainer.append(editIconContainer, deleteIconContainer);
+        diVEditAndDeleteIconContainer.append(editIconContainer, checkIconContainer, deleteIconContainer);
         div.append(todoItemPriority, diVEditAndDeleteIconContainer);
 
         todoItemContainer.append(todoItemTitle, todoItemDescription, todoItemDueDate, div);
@@ -60,3 +80,4 @@ export default function renderTodo(arr,deleteTodo,editTodo) {
         dynamicContainer.appendChild(todoItemContainer);
     }
 }
+
