@@ -4,30 +4,57 @@ import Project from "./project";
 import renderTodo from "./renderTodo";
 import createSidebarItem from "./sidebar";
 import addTodoIcon from './svgs/add-ellipse-svgrepo-com.svg';
-import calenderIcon from './svgs/calender-svgrepo-com.svg'
+import calenderIcon from './svgs/calender-svgrepo-com.svg';
+import homeIcon from './svgs/home-svgrepo-com (1).svg';
+import projectIcon from './svgs/folder-with-files-svgrepo-com.svg';
 
 const addTodoPopup = document.querySelector('#todo-form');
 const addTodoForm = document.querySelector('#todo-form');
-const closeBtn = document.querySelector('.close-btn');
-
-closeBtn.addEventListener('click', () =>{
-    addTodoPopup.close();
-})
+const addProjectForm = document.querySelector('#project-form');
+const todoCloseBtn = document.querySelector('.close-btn');
+const projectCloseBtn = document.querySelector('.project-close-btn');
 
 createSidebarItem(addTodoIcon, 'Add Todo', () =>{
     const todoTitle = document.querySelector('.todo-title')
-    todoTitle.textContent = 'ADD Todo';
+    todoTitle.textContent = 'ADD TODO';
     const addTodoBtn =  document.querySelector('#submit');
     addTodoBtn.value = 'Add';
-    const newTodoTitle = document.querySelector('#title').value = '';
-    const newTodoDescription = document.querySelector('#description').value = '';
-    const newTodoDueDate = document.querySelector('#due-date').value = '';
-    const newTodoPriority = document.querySelector('#priority').value = '';
+    document.querySelector('#title').value = '';
+    document.querySelector('#description').value = '';
+    document.querySelector('#due-date').value = '';
+    document.querySelector('#priority').value = '';
     addTodoPopup.showModal();
+});
+
+todoCloseBtn.addEventListener('click', () =>{
+    addTodoPopup.close();
+})
+projectCloseBtn.addEventListener('click', () =>{
+    addProjectForm.close();
+})
+
+createSidebarItem(homeIcon, 'Home', (event) =>{
+    const homeDiv = event.target.closest('.sidebar-assets');
+    homeDiv.classList.add('hover-color');
+});
+createSidebarItem(calenderIcon, 'Today');
+createSidebarItem(calenderIcon, 'Tomorrow');
+createSidebarItem(calenderIcon, 'Week');
+
+createSidebarItem(addTodoIcon, 'Project', () =>{
+    addProjectForm.showModal();
 });
 
 let isEditMode = false;
 let editIndex = null;
+
+addProjectForm.addEventListener('submit', (event) =>{
+    event.preventDefault();
+    const newProjectTitle =  document.querySelector('#project-title').value;
+    const newProject = new Project(newProjectTitle);
+    createSidebarItem(projectIcon, newProject.name);
+
+})
 
 addTodoForm.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -43,7 +70,7 @@ addTodoForm.addEventListener('submit', (event) => {
         editIndex = null; // Reset the index
     } else {
         // Add a new todo
-        const newTodoTitle = document.querySelector('#title').value;
+        const newTodoTitle = document.querySelector('#title').value.toUpperCase();
         const newTodoDescription = document.querySelector('#description').value;
         const newTodoDueDate = document.querySelector('#due-date').value;
         const newTodoPriority = document.querySelector('#priority').value;
@@ -58,14 +85,11 @@ addTodoForm.addEventListener('submit', (event) => {
 
 
 
-createSidebarItem(calenderIcon, 'Today');
-createSidebarItem(calenderIcon, 'Tomorrow');
-createSidebarItem(calenderIcon, 'Week');
-createSidebarItem(addTodoIcon, 'Project');
+
 
 
 const todoArrayContainer = [];
-const todo1 = new Todo('PlayStation','call of duty','2024-08-12','high');
+const todo1 = new Todo('PLAYSTATION','call of duty','2024-08-12','high');
 const todo2 = new Todo('NETFLIX','suits','2024-09-25','medium');
 const todo3 = new Todo('PRAYER','maghrib','2024-18-16','high');
 
@@ -94,7 +118,7 @@ function editTodo(event) {
 
     // Update the form UI for editing
     const todoTitle = document.querySelector('.todo-title');
-    todoTitle.textContent = 'EDIT Todo';
+    todoTitle.textContent = 'EDIT TODO';
 
     const addTodoBtn = document.querySelector('#submit');
     addTodoBtn.value = 'Update Todo';

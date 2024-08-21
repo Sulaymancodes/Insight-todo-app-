@@ -8,7 +8,7 @@
 <body>
     <div class="main-container">
         <header>
-            <h1>Welcome Back to 📘Insights (to-do App)</h1>
+            <h1>Welcome Back to 📘Insights</h1>
         </header>
         <aside class="padding">
             <p><a href="#">📘Insights</a></p>
@@ -23,7 +23,7 @@
 
         <dialog id="todo-form">
             <button class="close-btn">&times;</button>
-            <h1 class="white todo-title">ADD Todo</h1>
+            <h1 class="white todo-title">ADD TODO</h1>
             <br>
             <form action="">
                 <label for="title">Title</label>
@@ -46,6 +46,18 @@
                 </select>
                 <br>
 
+                <label for="submit"></label>
+                <input type="submit" id="submit" value="Add"><br>
+            </form>            
+        </dialog>
+        <dialog id="project-form">
+            <button class="project-close-btn">&times;</button>
+            <h1 class="white todo-title">ADD PROJECT</h1>
+            <br>
+            <form action="">
+                <label for="project-title">Title</label>
+                <input type="text" id="project-title" name="project-title" minlength="2" maxlength="80" placeholder="e.g: Thesis" required>
+                <br>
                 <label for="submit"></label>
                 <input type="submit" id="submit" value="Add"><br>
             </form>            

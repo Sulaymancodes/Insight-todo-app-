@@ -23,7 +23,7 @@ export default function renderTodo(arr,deleteTodo,editTodo) {
         const todoItemContainer = document.createElement('div');
         todoItemContainer.classList.add('todo-item-container');
 
-        const todoItemTitle = document.createElement('h1');
+        const todoItemTitle = document.createElement('h2');
         todoItemTitle.textContent = arr[i].title;
 
         const todoItemDescription = document.createElement('p');
@@ -48,17 +48,8 @@ export default function renderTodo(arr,deleteTodo,editTodo) {
 
         const checkIconContainer = document.createElement('img');
         checkIconContainer.addEventListener('click', () =>{
-            if(checkStatus === false){
-                todoItemContainer.classList.add('grey');
-                checkIconContainer.classList.add('green');
-                checkStatus = true;
-            }
-            else if(checkStatus === true){
-                todoItemContainer.classList.remove('grey');
-                checkIconContainer.classList.remove('green');
-                checkStatus = false;
-            }
-            
+            todoItemContainer.classList.toggle('grey');
+            checkIconContainer.classList.toggle('green');
         })
         checkIconContainer.classList.add('check-icon');
         checkIconContainer.src = checkIcon;
