@@ -14,6 +14,7 @@ const addProjectForm = document.querySelector('#project-form');
 const todoCloseBtn = document.querySelector('.close-btn');
 const projectCloseBtn = document.querySelector('.project-close-btn');
 
+//side-bar Items
 createSidebarItem(addTodoIcon, 'Add Todo', () =>{
     const todoTitle = document.querySelector('.todo-title')
     todoTitle.textContent = 'ADD TODO';
@@ -26,17 +27,12 @@ createSidebarItem(addTodoIcon, 'Add Todo', () =>{
     addTodoPopup.showModal();
 });
 
-todoCloseBtn.addEventListener('click', () =>{
-    addTodoPopup.close();
-})
-projectCloseBtn.addEventListener('click', () =>{
-    addProjectForm.close();
-})
-
 createSidebarItem(homeIcon, 'Home', (event) =>{
     const homeDiv = event.target.closest('.sidebar-assets');
     homeDiv.classList.add('hover-color');
+    renderTodo(todoArrayContainer, deleteTodo, editTodo);
 });
+
 createSidebarItem(calenderIcon, 'Today');
 createSidebarItem(calenderIcon, 'Tomorrow');
 createSidebarItem(calenderIcon, 'Week');
@@ -45,6 +41,16 @@ createSidebarItem(addTodoIcon, 'Project', () =>{
     addProjectForm.showModal();
 });
 
+
+todoCloseBtn.addEventListener('click', () =>{
+    addTodoPopup.close();
+})
+projectCloseBtn.addEventListener('click', () =>{
+    addProjectForm.close();
+})
+
+
+
 let isEditMode = false;
 let editIndex = null;
 
@@ -52,7 +58,21 @@ addProjectForm.addEventListener('submit', (event) =>{
     event.preventDefault();
     const newProjectTitle =  document.querySelector('#project-title').value;
     const newProject = new Project(newProjectTitle);
-    createSidebarItem(projectIcon, newProject.name);
+    const projectTodo = new Todo('PLAYSTATION','call of duty','2024-08-12','high');
+    newProject.addTodo(projectTodo);
+    createSidebarItem(projectIcon, newProject.name, ()=>{
+        // renderTodo(newProject.projectContainer, deleteTodo, editTodo);
+        const mainContainer = document.querySelector('#main');
+        const mainContainerTitle = document.querySelector('#main-title');
+        const addIconContainer = document.createElement('div');
+        addIconContainer.classList.add('add-icon-container');
+        const imgElement = document.createElement('img');
+        imgElement.classList.add('add-svg');
+        imgElement.src = addTodoIcon;    
+        mainContainerTitle.textContent = newProjectTitle;
+        addIconContainer.appendChild(imgElement);
+        mainContainer.append(addIconContainer);
+    });
 
 })
 
@@ -96,7 +116,6 @@ const todo3 = new Todo('PRAYER','maghrib','2024-18-16','high');
 todoArrayContainer.push(todo1);
 todoArrayContainer.push(todo2);
 todoArrayContainer.push(todo3);
-
 
 
 renderTodo(todoArrayContainer,deleteTodo,editTodo)

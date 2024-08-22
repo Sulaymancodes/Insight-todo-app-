@@ -3,7 +3,6 @@ import deleteIcon from './svgs/delete-filled-svgrepo-com.svg';
 import checkIcon from './svgs/check-svgrepo-com.svg';
 
 export default function renderTodo(arr,deleteTodo,editTodo) {
-    let checkStatus = false;
 
     const mainContainer = document.querySelector('#main');
 
