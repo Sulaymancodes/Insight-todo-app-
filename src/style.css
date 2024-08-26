@@ -153,9 +153,7 @@ main::-webkit-scrollbar {
     background-color: #1d3542;
 }
 
-.check-icon:hover {
-    background-color: rgb(56, 190, 56);
-}
+
 
 .green {
     background-color: rgb(56, 190, 56);
@@ -254,7 +252,7 @@ label {
     top: 10px;
     left: 10px;
     z-index: 1000;
-    background-color: #17293300;
+    background-color: #1C91F2;
     border: 1px solid #304F69;
     color: white;
     padding: 10px;

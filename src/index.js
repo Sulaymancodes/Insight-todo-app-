@@ -31,14 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
     todoArrayContainer.projectContainer = savedTodos;
     renderTodo(todoArrayContainer.projectContainer, deleteTodo, editTodo, todoArrayContainer.name);
 
-    const savedProject = localStorage.getItem('project');
-    if (savedProject) {
-        createSidebarItem(projectIcon, savedProject,() =>{
-
-            renderTodo(activeProject.projectContainer, deleteTodo, editTodo, savedProject);
-
-        });
-    }
 });
 //side-bar Items
 createSidebarItem(addTodoIcon, 'Add Todo', () =>{
@@ -87,7 +79,6 @@ addProjectForm.addEventListener('submit', (event) =>{
     event.preventDefault();
     const newProjectTitle =  document.querySelector('#project-title').value;
     const newProject = new Project(newProjectTitle);
-    localStorage.setItem('project',`${newProject.name}`);
     
     createSidebarItem(projectIcon, newProject.name, ()=>{
         activeProject = newProject;
