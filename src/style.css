@@ -122,7 +122,9 @@ main::-webkit-scrollbar {
 .add-icon-container{
     text-align: center;
 }
-
+.add-icon-container:hover{
+    background-color: #1f3643; 
+}
 
 .edit-icon,
 .delete-icon,

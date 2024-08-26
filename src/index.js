@@ -20,7 +20,21 @@ let isEditMode = false;
 let editIndex = null;
 let activeProject = null;  
 const today = new Date();
+//dom loaded logic for localstorage
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTodos = JSON.parse(localStorage.getItem(`${activeProject.name}`)) || [];
+    todoArrayContainer.projectContainer = savedTodos;
+    renderTodo(todoArrayContainer.projectContainer, deleteTodo, editTodo, todoArrayContainer.name);
 
+    const savedProject = localStorage.getItem('project');
+    if (savedProject) {
+        createSidebarItem(projectIcon, savedProject,() =>{
+
+            renderTodo(activeProject.projectContainer, deleteTodo, editTodo, savedProject);
+
+        });
+    }
+});
 //side-bar Items
 createSidebarItem(addTodoIcon, 'Add Todo', () =>{
     const todoTitle = document.querySelector('.todo-title')
@@ -34,9 +48,7 @@ createSidebarItem(addTodoIcon, 'Add Todo', () =>{
     addTodoPopup.showModal();
 });
 
-createSidebarItem(homeIcon, 'Home', (event) =>{
-    const homeDiv = event.target.closest('.sidebar-assets');
-    homeDiv.classList.add('hover-color');
+createSidebarItem(homeIcon, 'Home',() =>{
     activeProject = todoArrayContainer;
     renderTodo(activeProject.projectContainer, deleteTodo, editTodo,activeProject.name);
 });
@@ -66,21 +78,11 @@ createSidebarItem(addTodoIcon, 'Project', () =>{
     addProjectForm.showModal();
 });
 
-
-todoCloseBtn.addEventListener('click', () =>{
-    addTodoPopup.close();
-})
-projectCloseBtn.addEventListener('click', () =>{
-    addProjectForm.close();
-})
-
-
-
-
 addProjectForm.addEventListener('submit', (event) =>{
     event.preventDefault();
     const newProjectTitle =  document.querySelector('#project-title').value;
     const newProject = new Project(newProjectTitle);
+    localStorage.setItem('project',`${newProject.name}`);
     
     createSidebarItem(projectIcon, newProject.name, ()=>{
         activeProject = newProject;
@@ -93,6 +95,10 @@ addProjectForm.addEventListener('submit', (event) =>{
         imgElement.classList.add('add-svg');
         imgElement.src = addTodoIcon;    
         imgElement.addEventListener('click', () =>{
+            document.querySelector('#title').value = '';
+            document.querySelector('#description').value = '';
+            document.querySelector('#due-date').value = '';
+            document.querySelector('#priority').value = '';
             addTodoForm.showModal();
             renderTodo(activeProject.projectContainer, deleteTodo, editTodo,activeProject.name);
         })
@@ -100,7 +106,9 @@ addProjectForm.addEventListener('submit', (event) =>{
         addIconContainer.appendChild(imgElement);
         const newProjectH1 = document.createElement('h1');
         newProjectH1.textContent = newProjectTitle;
-        mainContainer.append(newProjectH1,addIconContainer);  
+        const newProjectDescription = document.createElement('p');
+        newProjectDescription.textContent = 'Overview of your Pending To-do';
+        mainContainer.append(newProjectH1,newProjectDescription,addIconContainer);  
     });
 })
 
@@ -116,6 +124,9 @@ addTodoForm.addEventListener('submit', (event) => {
 
         isEditMode = false;
         editIndex = null;
+        
+        // Update local storage
+        localStorage.setItem(`${activeProject.name}`, JSON.stringify(activeProject.projectContainer));
     } else {
         // Add a new todo to the active project
         const newTodoTitle = document.querySelector('#title').value.toUpperCase();
@@ -125,28 +136,22 @@ addTodoForm.addEventListener('submit', (event) => {
 
         const newTodo = new Todo(newTodoTitle, newTodoDescription, newTodoDueDate, newTodoPriority);
         activeProject.addTodo(newTodo);
+
     }
+    
+    // Update local storage
+    localStorage.setItem(`${activeProject.name}`, JSON.stringify(activeProject.projectContainer));
 
     renderTodo(activeProject.projectContainer, deleteTodo, editTodo, activeProject.name);
     addTodoPopup.close();
 });
 
-
-
-
-
-const todoArrayContainer = new Project('HOME');
-const todo1 = new Todo('PLAYSTATION','call of duty','2024-08-24','high');
-const todo2 = new Todo('NETFLIX','suits','2024-08-31','medium');
-const todo3 = new Todo('PRAYER','maghrib','2024-08-25','high');
-
-todoArrayContainer.addTodo(todo1);
-todoArrayContainer.addTodo(todo2);
-todoArrayContainer.addTodo(todo3);
-
-activeProject = todoArrayContainer;
-
-renderTodo(activeProject.projectContainer,deleteTodo,editTodo,activeProject.name);
+todoCloseBtn.addEventListener('click', () =>{
+    addTodoPopup.close();
+})
+projectCloseBtn.addEventListener('click', () =>{
+    addProjectForm.close();
+})
 
 
 function deleteTodo(event) {
@@ -156,6 +161,9 @@ function deleteTodo(event) {
 
     // Remove the todo from the active project
     activeProject.projectContainer.splice(index, 1);
+
+    // Update local storage
+    localStorage.setItem(`${activeProject.name}`, JSON.stringify(activeProject.projectContainer));
 
     // Re-render todos for the active project
     renderTodo(activeProject.projectContainer, deleteTodo, editTodo, activeProject.name);
@@ -180,3 +188,11 @@ function editTodo(event) {
 
     addTodoPopup.showModal();
 }
+
+
+const todoArrayContainer = new Project('HOME');
+activeProject = todoArrayContainer;
+
+renderTodo(activeProject.projectContainer,deleteTodo,editTodo,activeProject.name);
+
+
