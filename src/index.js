@@ -20,6 +20,11 @@ let isEditMode = false;
 let editIndex = null;
 let activeProject = null;  
 const today = new Date();
+
+function toggleSidebar() {
+    document.querySelector('aside').classList.toggle('open');
+}
+
 //dom loaded logic for localstorage
 document.addEventListener('DOMContentLoaded', () => {
     const savedTodos = JSON.parse(localStorage.getItem(`${activeProject.name}`)) || [];

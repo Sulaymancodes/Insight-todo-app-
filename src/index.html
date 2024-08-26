@@ -8,7 +8,8 @@
 <body>
     <div class="main-container">
         <header>
-            <h1>Welcome Back to 📘Insights</h1>
+            <button class="sidebar-toggle-btn" onclick="toggleSidebar()">☰</button>
+            <h1>📘Insights Todo App</h1>
         </header>
         <aside class="padding">
             <p><a href="#">📘Insights</a></p>
@@ -61,4 +62,11 @@
     </div>
     
 </body>
+<script>
+    function toggleSidebar() {
+        const sidebar = document.querySelector('aside');
+        sidebar.classList.toggle('open');
+    }
+</script>
+    
 </html>

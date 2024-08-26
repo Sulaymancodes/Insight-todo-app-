@@ -1,7 +1,9 @@
-*{
+/* Reset and Font */
+* {
     box-sizing: border-box;
     margin: 0;
 }
+
 @font-face {
     font-family: 'MyFont';
     src: url('./gang-of-three-cufonfonts/go3v2.ttf') format('truetype');
@@ -9,49 +11,209 @@
     font-style: normal;
 }
 
-body{
+/* General Styles */
+body {
     background-color: #0F1A24;
     margin: 0;
     color: #fff;
     font-family: monospace;
     font-size: large;
-    overflow: hidden;
 }
-a{
+
+a {
     text-decoration: none;
-    color:#fff;
-   
+    color: #fff;
 }
-.flex{
+
+.flex {
     display: flex;
     justify-content: space-between;
 }
-.main-container{
-    width: 100%;
+
+.main-container {
     display: grid;
-    grid-template-columns: 1fr repeat(10,1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 4fr; /* Sidebar + Main Content */
+    grid-template-rows: auto 1fr;
+    width: 100%;
+    height: 100vh;
     background-color: #0F1A24;
 }
-header{
+
+header {
     padding: 1em;
     border-bottom: 1.5px solid #233b53;
-    grid-column: 3 / -1;
+    grid-column: 1 / -1;
 }
-header > h1{
+
+header > h1 {
+    text-align: center;
+    font-size: 2rem; 
+    font-family:monospace;
+}
+
+.shadow {
+    box-shadow: 2px 2px black;
+}
+
+.padding {
+    padding: .5em;
+}
+
+.border {
+    border-bottom: 1.5px solid #233b53;
+}
+
+/* Sidebar Styles */
+aside {
+    border-right: 1.5px solid #233b53;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    transition: transform 0.3s ease; /* Smooth transition for showing/hiding */
+    grid-column: 1 / 2;
+    height: 100vh;
+}
+
+aside > p {
+    text-align: center;
+    margin: 30px;
+}
+
+.sidebar-assets {
+    display: flex;
+    padding: .7em;
+    margin-bottom: .5em;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.sidebar-assets:hover {
+    background-color: #1d3542;
+}
+
+.sidebar-color {
+    background-color: #1d3542;
+}
+
+.sidebar-text {
+    margin-left: 12px;
+}
+
+.hover-color {
+    background-color: #1d3542;
+}
+
+/* Main Content */
+main {
+    grid-column: 2 / -1;
+    padding: 1em 2em;
+    overflow-y: auto;
+    gap: 10px;
+}
+
+main::-webkit-scrollbar {
+    display: none; /* Hide the scrollbar track in WebKit browsers (Chrome, Safari) */
+}
+
+.grey {
+    color: #8c97a0;
+}
+
+/* Todo Items and Icons */
+.todo-item-container,
+.add-icon-container {
+    background-color: #172933;
+    border: 1px solid #304F69;
+    padding: 10px;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+.add-icon-container {
     text-align: center;
 }
 
-.shadow{
-    box-shadow: 2px 2px black;
-}
-.padding{
-    padding: .5em;
-}
-.border{
-    border-bottom: 1.5px solid #233b53;
+.add-icon-container:hover {
+    background-color: #1f3643;
 }
 
+.edit-icon,
+.delete-icon,
+.check-icon {
+    background-color: #172933;
+    border: 1px solid #304F69;
+    padding: 2px;
+    width: 25px;
+    height: 25px;
+}
+
+.edit-icon:hover,
+.delete-icon:hover,
+.check-icon:hover {
+    background-color: #1d3542;
+}
+
+.check-icon:hover {
+    background-color: rgb(56, 190, 56);
+}
+
+.green {
+    background-color: rgb(56, 190, 56);
+}
+
+/* Dialog Styles */
+dialog > h1 {
+    text-align: center;
+}
+
+dialog {
+    position: fixed;
+    margin: 0 auto;
+    top: 3vh;
+    width: 80%;
+    background-color: #0F1A24;
+    font-weight: bold;
+    border: 1.5px solid #233b53;
+    padding: 3em 2.5em;
+}
+
+.white {
+    color: #fff;
+}
+
+/* Form Styles */
+form {
+    text-align: left;
+    color: #fff;
+    margin: 0 auto;
+}
+
+input, #priority {
+    padding: 1rem 2rem;
+    width: 100%;
+    background-color: #172933;
+    border: 1px solid #304F69;
+    color: #8FB0CC;
+}
+
+.red:hover {
+    background-color: rgb(223, 39, 39);
+}
+
+#submit, .submit {
+    background-color: #1C91F2;
+    color: #fff;
+    padding: 1em 0;
+    border: none;
+    text-align: center;
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-size: 1rem;
+}
 .svg{
     width: 20px;
     height: 20px;
@@ -60,150 +222,7 @@ header > h1{
     width: 50px;
     height: 50px;
 }
-aside{
-    height: 100vh;
-    border-right: 1.5px solid #233b53;
-    display: flex;
-    flex-direction: column;
-    grid-column: 1 / span 2;
-    grid-row: 1 / 6;
-}
-
-aside > p{
-    text-align: center;
-    margin: 30px;
-}
-
-.sidebar-assets{
-    display: flex;
-    padding: .7em;
-    margin-bottom: .5em;
-    border-radius: 10px;
-    align-items: center;
-}
-
-.sidebar-assets:hover{
-    background-color: #1d3542;
-    
-}
-.sidebar-color{
-    background-color: #1d3542;
-}
-.sidebar-text{
-    margin-left: 12px;
-}
-.hover-color{
-    background-color: #1d3542;
-}
-
-main{
-    grid-column: 3 / -1;
-    grid-row: 2 / 6;
-    gap: 10px;
-    padding: 1em 2em;
-    overflow-y: auto; 
-    height: 80vh;
-}
-main::-webkit-scrollbar {
-    display: none; /* Hide the scrollbar track in WebKit browsers (Chrome, Safari) */
-}
-
-.grey{
-    color: #8c97a0;
-}
-.todo-item-container,
-.add-icon-container{
-    background-color: #172933;
-    border: 1px solid #304F69;
-    padding: 10px;
-    margin-top: 10px;
-    line-height: 1.5;
-}
-.add-icon-container{
-    text-align: center;
-}
-.add-icon-container:hover{
-    background-color: #1f3643; 
-}
-
-.edit-icon,
-.delete-icon,
-.check-icon{
-    background-color: #172933;
-    border: 1px solid #304F69;
-    padding: 2px;
-    width: 25px;
-    height: 25px;
-}
-.edit-icon:hover,
-.delete-icon:hover,
-.check-icon:hover{
-    background-color: #1d3542;
-}
-.check-icon:hover{
-    background-color: rgb(56, 190, 56);
-}
-.green{
-    background-color: rgb(56, 190, 56);
-}
-dialog > h1{
-    text-align: center;
-}
-dialog{
-    position: fixed;
-    margin: 0 auto;
-    top: 3vh;
-    width: 80%;
-    background-color: #0F1A24;
-    font-weight: bold;
-    padding: 2rem 1rem;
-    /* border-radius: 10px; */
-    border: 1.5px solid #233b53;
-    padding: 3em 2.5em;
-}
-
-
-.white{
-    color: #fff;
-}
-
-form {
-    text-align: left; /* Align text inside the form to the left */
-    color: #fff;
-    
-    margin: 0 auto; /* Center the form on the page */
-}
-
-input,#priority {
-    padding: 1rem 2rem;
-    width: 100%; /* Make inputs take full width of their container */
-    background-color: #172933;
-    border: none;
-    /* border-radius: 10px; */
-    border: 1px solid #304F69;
-    color: #8FB0CC;
-}
-.red:hover{
-    background-color: rgb(223, 39, 39);
-}
-
-
-#submit, .submit {
-    background-color: #1C91F2;
-    color: #fff;
-    padding: 1em 0;
-    border: none;
-    text-align: center;
-    /* border-radius: 10px; */
-    width: 100%; /* Ensure the submit button takes full width of the form */
-}
-
-label {
-    display: block; /* Make labels block elements so they stack above inputs */
-    margin: 10px 0 5px; /* Space between labels and inputs */
-    font-size: 1rem; /* Adjust label font size as needed */
-}
-
+/* Close Buttons */
 .close-btn,
 .project-close-btn,
 .log-close-btn {
@@ -217,15 +236,59 @@ label {
     cursor: pointer;
 }
 
-#submit:hover{
+#submit:hover,
+.profile-btn:hover {
     background-color: #135e9b;
 }
-.profile-btn:hover{
-    background-color: #135e9b;
-}
-.message{
+
+.message {
     color: white;
     text-align: center;
     margin: 20px 0;
 }
 
+/* Sidebar Toggle Button */
+.sidebar-toggle-btn {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+    background-color: #17293300;
+    border: 1px solid #304F69;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .main-container {
+        grid-template-columns: 1fr; /* Full width for main content */
+    }
+
+    aside {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 250px;
+        height: 100%;
+        background-color: #0F1A24;
+        transform: translateX(-100%); /* Hide sidebar by moving it off-screen */
+        grid-column: 1 / -1;
+    }
+
+    .sidebar-toggle-btn {
+        display: block; /* Show toggle button on smaller screens */
+    }
+
+    aside.open {
+        transform: translateX(0); /* Show sidebar when open */
+    }
+
+    main {
+        grid-column: 1 / -1; /* Full width for main content */
+    }
+}
